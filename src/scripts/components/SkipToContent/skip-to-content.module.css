@@ -1,0 +1,17 @@
+/* Skip to Content */
+.skipToContent {
+    display: inline-block;
+    position: absolute;
+    top: -1000px;
+    left: 0;
+    font-size: 16px;
+    text-align: center;
+    background-color: #DA7F8F;
+    color: #FFF;
+    padding: 10px 20px;
+    z-index: 100;
+}
+
+.skipToContent:focus {
+    top: calc(var(--appbar-height) + 10px);
+}

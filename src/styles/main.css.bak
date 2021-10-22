@@ -1,0 +1,271 @@
+/* Starter Configuration */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    background-color: #FAF3F3;
+    color: #424242;
+}
+
+a, button, input, textarea {
+    display: inline-block;
+    box-sizing: border-box;
+    min-width: 44px;
+    min-height: 44px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #C2B8A3;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #A19882;
+}
+
+/* Header (App Bar and Nav) */
+.header {
+    display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    padding: 10px 40px;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    background-color: #FFF;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.25);
+}
+
+.logo-image {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.logo-title a {
+    display: flex;
+    align-items: center;
+    font-size: 28px;
+}
+
+#hamburger {
+    display: block;
+    border: none;
+    background: none;
+    color: inherit;
+    padding: 5px;
+    font-size: 28px;
+}
+
+.header nav {
+    position: absolute;
+    width: 50%;
+    height: 100vh;
+    top: 60px;
+    right: 0;
+    transform: translate(100%, 0);
+    transition: transform 0.3s ease-in-out;
+    background-color:#FAF3F3;
+    font-size: 20px;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+.header nav.open {
+    transform: translate(0, 0);
+}
+
+.header nav ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.header nav ul li {
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid #A19882;
+}
+
+.header nav ul li a {
+    display: flex;
+    align-items: center;
+}
+
+.header nav ul li a span {
+    transition: border 0.1s;
+}
+
+
+.header nav ul li a:hover span {
+    margin-bottom: -3px;
+    border-bottom: 3px solid #DA7F8F;
+}
+
+.header nav ul li a.active span {
+    margin-bottom: -3px;
+    border-bottom: 3px solid #F35588;
+}
+
+/* main content */
+.main {
+    margin-top: 60px;
+}
+
+/* Skip to Content */
+.skip-link {
+    position: absolute;
+    top: -1000px;
+    left: 0;
+    font-size: 16px;
+    text-align: center;
+    background-color: #DA7F8F;
+    color: #FFF;
+    padding: 10px 20px;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 60px;
+}
+
+/* Hero Element */
+.hero {
+    height: 400px;
+    width: 100%;
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+        ),
+        url("../public/images/hero.jpg");
+    background-position: center;
+}
+
+.hero-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.hero-title {
+    color: #FAF3F3;
+    font-weight: 800;
+    font-size: 36px;
+}
+
+.hero-description {
+    color: #E1E5EA;
+    margin-top: 16px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* Content */
+.content {
+    padding: 10px;
+}
+
+.content-title {
+    font-size: 26px;
+    text-align: center;
+    margin: 32px 0;
+}
+
+/* Footer */
+.footer {
+    margin-top: 20px;
+    text-align: center;
+    padding: 20px 0;
+    background-color: #FFFFFF;
+    box-shadow: 8px 0 8px 0 rgba(0, 0, 0, 0.25);
+}
+
+.footer span {
+    font-size: 18px;
+}
+
+@media screen and (min-width: 768px) {
+    #hamburger {
+        display: none;
+    }
+
+    .header {
+        justify-content: start;
+    }
+
+    .header nav {
+        position: static;
+        width: auto;
+        height: auto;
+        background-color: inherit;
+        transform: none;
+        box-shadow: none;
+    }
+
+    .header nav ul {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .header nav ul li {
+        padding: 0 20px;
+        border-bottom: none;
+    }
+
+    .content {
+        padding: 40px;
+    }
+
+    .logo-title {
+        margin-right: auto;
+    }
+
+    .card-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .hero {
+        min-width: 1000px;
+    }
+
+    .card-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

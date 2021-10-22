@@ -1,0 +1,31 @@
+.navBarItem {
+    display: flex;
+    padding: 10px;
+    /* border-bottom: 1px solid #A19882; */
+    border-bottom: 1px solid var(--border-color);
+}
+
+.navBarItem a span {
+    transition: border 0.1s;
+}
+
+
+.navBarItem a:hover span {
+    margin-bottom: -3px;
+    /* border-bottom: 3px solid #DA7F8F; */
+    border-bottom: 3px solid var(--secondary-color);
+}
+
+.active span {
+    margin-bottom: -3px;
+    /* border-bottom: 3px solid #F35588; */
+    border-bottom: 3px solid var(--primary-color);
+}
+
+@media screen and (min-width: 768px) {
+    .navBarItem {
+        padding: 0 20px;
+        border-bottom: none;
+    }
+
+}

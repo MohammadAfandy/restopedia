@@ -1,0 +1,129 @@
+/* CSS Variables */
+:root {
+    --main-background: #FAFAFA;
+    --secondary-background: #F2F2F2;
+    --appbar-background: #F7F7F7;
+    --font-color: #222222;
+    --primary-color: #EA7B0C;
+    --secondary-color: #ff9e2f;
+    --border-color: rgba(192, 192, 192, 0.9);
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --appbar-height: 60px;
+    --skeleton-main-color: #ddd;
+    --skeleton-secondary-color: #e8e8e8;
+}
+
+/* Starter Configuration */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    transition: background-color 0.2s linear;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    background-color: var(--main-background);
+    color: var(--font-color);
+}
+
+a, button, input, textarea {
+    display: inline-block;
+    box-sizing: border-box;
+    min-width: 44px;
+    min-height: 44px;
+}
+
+a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+#content {
+    height: 100%;
+}
+
+#error_content {
+    text-align: center;
+}
+
+.not-found {
+    padding-top: 200px;
+}
+
+.main-title {
+    font-size: 26px;
+    text-align: center;
+    margin: 16px 0;
+}
+
+/* Footer */
+.footer {
+    /* position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0; */
+    /* margin-top: 20px; */
+    text-align: center;
+    padding: 20px 0;
+    /* background-color: #FFFFFF; */
+    background-color: var(--appbar-background);
+    box-shadow: 8px 0 8px 0 var(--shadow-color);
+}
+
+.footer span {
+    font-size: 18px;
+}
+/* 
+.skeleton span,
+.skeleton p,
+.skeleton h1,
+.skeleton h2,
+.skeleton h3,
+.skeleton h4
+{
+    background-image: linear-gradient(
+      to right,
+
+      #ddd 0%,
+      #e8e8e8 20%,
+      #ddd 100%
+    );
+    background-size: 200% 100%;
+    animation: bgPos 1s linear infinite;
+    border-radius: 10px;
+}
+
+@keyframes bgPos {
+    0% {
+      background-position: 50% 0;
+    }
+
+    100% {
+      background-position: -150% 0;
+    }
+} */
+
+[data-theme="dark"] {
+    --main-background: #1C1C1C;
+    --secondary-background: #333333;
+    --appbar-background: #161616;
+    --font-color: ##eeeeee;
+    --shadow-color: rgba(0, 0, 0, 1);
+    --skeleton-main-color: #383a3f ;
+    --skeleton-secondary-color: #43454b ;
+}

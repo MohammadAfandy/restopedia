@@ -1,0 +1,26 @@
+.restoList {
+    display: block;
+    padding: 40px 20px;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+@media screen and (min-width: 768px) {
+    .restoList {
+        padding: 40px;
+    }
+
+    .wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .wrapper {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

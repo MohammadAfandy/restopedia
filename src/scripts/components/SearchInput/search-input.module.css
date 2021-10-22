@@ -1,0 +1,37 @@
+.searchInput {
+    display: flex;
+    border-radius: 10px;
+    align-items: center;
+    background-color: #FFF;
+    padding: 4px 8px;
+    min-width: 100px;
+    font-size: 20px;
+    color: #222222;
+    width: 100%;
+    transition: width 0.3s ease-in-out;
+}
+
+.search {
+    color: inherit;
+    font-size: inherit;
+    display: inline-block;
+    width: 40px;
+    opacity: 0.5;
+    margin-right: 20px;
+}
+
+.input {
+    color: inherit;
+    font-size: inherit;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: inherit;
+}
+
+
+@media screen and (min-width: 768px) {
+    .searchInput {
+        width: 60%;
+    }
+}

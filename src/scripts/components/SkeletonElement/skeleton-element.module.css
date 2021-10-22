@@ -1,0 +1,25 @@
+/* Thanks brad https://github.com/bradtraversy/50projects50days/tree/master/content-placeholder */
+.skeleton {
+    display: inline-block;
+    width: 100%;
+    background-image: linear-gradient(
+        to right,
+        var(--skeleton-main-color) 0%,
+        var(--skeleton-secondary-color) 20%,
+        var(--skeleton-main-color) 40%,
+        var(--skeleton-main-color) 100%
+    );
+    background-size: 200% 100%;
+    animation: bgPos 1s linear infinite;
+    border-radius: 10px;
+}
+
+@keyframes bgPos {
+    0% {
+        background-position: 50% 0;
+    }
+
+    100% {
+        background-position: -150% 0;
+    }
+}

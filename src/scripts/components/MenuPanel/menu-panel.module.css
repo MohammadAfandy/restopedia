@@ -1,0 +1,36 @@
+.menuPanel {
+    display: block;
+}
+
+.fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 20px;
+    border: 1px solid #cfcfcf;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.fieldset legend {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.item {
+    font-weight: 800;
+    color: #fff;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.food {
+    background-color: #d10000;
+}
+
+.drink {
+    background-color: #0044ff;
+}

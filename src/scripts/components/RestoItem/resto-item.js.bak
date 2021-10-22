@@ -1,0 +1,82 @@
+import { BaseElement, html } from '../base-element';
+import UrlParser from '../../utils/url-parser';
+import '../Star-Rating/star-rating';
+
+import styles from './resto-item.module.css';
+
+export default class RestoItem extends BaseElement {
+  constructor() {
+    super();
+    this.classList.add(styles.card);
+    this.restaurant = {};
+  }
+
+  static get properties() {
+    return {
+      restaurant: { type: Object },
+      isLoading: { type: Boolean },
+    };
+  }
+
+  // renderLoading() {
+
+  // }
+
+  render() {
+    // if (!this.restaurant) return html`<div>ga ada</div>`;
+    // if (this.isLoading) return this.renderLoading();
+    console.log('isLoading', this.isLoading);
+    const {
+      id = '',
+      name = '',
+      picture = '',
+      city = '',
+      rating = 0,
+      description = '',
+    } = this.restaurant;
+    return html`
+      <div class="${styles.imageContainer} ${this.isLoading ? 'skeleton' : ''}">
+        ${this.isLoading
+          ? ''
+          : html`
+            <img
+              class="${styles.image}"
+              src="${picture.small}"
+              alt="Restaurant ${name}"
+            />`
+        }
+      </div>
+      <div class="${styles.body}">
+        <div class="${styles.subBody}">
+          <div class="${styles.city} ${this.isLoading ? 'skeleton' : ''}">
+            ${this.isLoading
+              ? ''
+              : html`
+                <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>
+                <span>${city}</span>
+              `
+            }
+          </div>
+          <div class="${styles.rating} ${this.isLoading ? 'skeleton' : ''}">
+          ${this.isLoading
+            ? ''
+            : html`
+              <star-rating
+                .rating=${rating}
+                .maxRating=${5}
+                .totalStar=${5}
+                ?showRating=${true}
+              ></star-rating>`
+          }
+          </div>
+        </div>
+        <h2 class="${styles.title} ${this.isLoading ? 'skeleton' : ''}">
+          <a href="/#/restaurants/${UrlParser.slugify(name)}-${id}">${name}</a>
+        </h2>
+        <p class="${styles.description} ${this.isLoading ? 'skeleton' : ''}">${description}</p>
+      </div>
+    `;
+  }
+}
+
+customElements.define('resto-item', RestoItem);

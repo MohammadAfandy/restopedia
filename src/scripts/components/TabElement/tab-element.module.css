@@ -1,0 +1,33 @@
+.tabElement {
+    display: block;
+}
+
+.tab {
+    display: inline-block;
+    transition: color 0.5s ease;
+    cursor: pointer;
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    background: none;
+    color: inherit;
+    min-width: 150px;
+}
+
+.tab:hover {
+    color: var(--primary-color);
+    margin-bottom: -2px;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.active {
+    color: var(--primary-color);
+    margin-bottom: -2px;
+    border-bottom: 2px solid var(--primary-color);
+    font-weight: 600;
+}
+
+.tabPanel {
+    padding: 30px 0;
+    border-top: 2px solid #cfcfcf
+}

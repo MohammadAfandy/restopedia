@@ -1,0 +1,66 @@
+.navBar {
+    display: block;
+    position: absolute;
+    width: 50%;
+    height: 100vh;
+    top: var(--appbar-height);
+    right: 0;
+    transform: translate(100%, 0);
+    transition: transform 0.3s ease-in-out;
+    background-color: var(--appbar-background);
+    font-size: 20px;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+}
+
+.open {
+    transform: translate(0, 0);
+}
+
+.navBar ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+}
+
+.navBar ul li {
+    white-space: normal;
+}
+
+.darkMode {
+    align-self: end;
+    margin-top: auto;
+    margin-bottom: calc(var(--appbar-height) + 10px);
+}
+
+@media screen and (min-width: 768px) {
+    .navBar {
+        position: static;
+        width: auto;
+        height: auto;
+        transform: none;
+        box-shadow: none;
+        margin-left: 16px;
+    }
+
+    .navBar ul {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navBar ul li {
+        white-space: nowrap;
+        overflow-y: hidden;
+        overflow-x: auto;
+    }
+
+    .darkMode {
+        align-self: initial;
+        margin-top: initial;
+        margin-bottom: initial;
+    }
+
+}

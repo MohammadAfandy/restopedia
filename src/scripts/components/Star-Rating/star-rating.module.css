@@ -1,0 +1,16 @@
+.starRating {
+    display: inline-block;
+}
+
+.star {
+    color: #FF9529;
+}
+
+.big {
+    font-weight: 800;
+}
+
+.small {
+    font-size: 10px;
+    font-weight: 400;
+}
