@@ -44,66 +44,6 @@ export default class NavBar extends BaseElement {
         isActive: false,
         target: '_blank',
       },
-      // {
-      //   url: 'https://github.com/mohammadafandy',
-      //   name: 'About Us',
-      //   isActive: false,
-      //   target: '_blank',
-      // },
-      // {
-      //   url: 'https://github.com/mohammadafandy',
-      //   name: 'About Us',
-      //   isActive: false,
-      //   target: '_blank',
-      // },
-      // {
-      //   url: 'https://github.com/mohammadafandy',
-      //   name: 'About Us',
-      //   isActive: false,
-      //   target: '_blank',
-      // },
-      // {
-      //   url: 'https://github.com/mohammadafandy',
-      //   name: 'About Us',
-      //   isActive: false,
-      //   target: '_blank',
-      // },
-      // {
-      //   url: 'https://github.com/mohammadafandy',
-      //   name: 'About Us',
-      //   isActive: false,
-      //   target: '_blank',
-      // },
-      // {
-      //   url: 'https://github.com/mohammadafandy',
-      //   name: 'About Us',
-      //   isActive: false,
-      //   target: '_blank',
-      // },
-      // {
-      //   url: 'https://github.com/mohammadafandy',
-      //   name: 'About Us',
-      //   isActive: false,
-      //   target: '_blank',
-      // },
-      // {
-      //   url: 'https://github.com/mohammadafandy',
-      //   name: 'About Usss sfaejk fneak fnejkan',
-      //   isActive: false,
-      //   target: '_blank',
-      // },
-      // {
-      //   url: 'https://github.com/mohammadafandy',
-      //   name: 'About Us',
-      //   isActive: false,
-      //   target: '_blank',
-      // },
-      // {
-      //   url: 'https://github.com/mohammadafandy',
-      //   name: 'About Us',
-      //   isActive: false,
-      //   target: '_blank',
-      // },
     ];
   }
 

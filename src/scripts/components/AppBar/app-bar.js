@@ -2,15 +2,12 @@ import { BaseElement, html } from '../base-element';
 import LogoImage from '../../../public/images/logo.png';
 import CONFIG from '../../globals/config';
 import '../NavBar/nav-bar';
-// import '../DarkModeToggle/dark-mode-toggle';
 
 import styles from './app-bar.module.css';
 
 export default class AppBar extends BaseElement {
   constructor() {
     super();
-    this.setAttribute('role', 'heading');
-    this.setAttribute('aria-level', '1');
     this.classList.add(styles.appBar);
     this.logo = LogoImage;
     this.title = CONFIG.APP_NAME;
@@ -63,12 +60,6 @@ export default class AppBar extends BaseElement {
   }
 
   render() {
-    /**
-     * when passing function to child component
-     * we need to bind "this" to the function
-     * so when the function invoked from child component
-     * "this" context will be refering to this class and not the child class
-     */
     return html`
       <img class="${styles.logo}" src="${this.logo}" alt="Logo ${this.title}" />
       <h1 class="${styles.title}">

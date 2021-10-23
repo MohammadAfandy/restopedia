@@ -11,13 +11,11 @@
 
 .card:hover {
     box-shadow: 0 8px 16px 0 var(--shadow-color);
-    /* top: -4px; */
     position: relative;
 }
 
 .imageContainer {
     width: 100%;
-    /* min-height: 250px; */
 }
 
 .image {
@@ -47,7 +45,6 @@
 .subBody {
     display: flex;
     justify-content: space-between;
-    /* min-height: 25px; */
     margin-bottom: 5px;
 }
 
@@ -63,12 +60,10 @@
 }
 
 .rating {
-    /* min-width: 150px; */
     margin-bottom: 5px;
 }
 
 .description {
-    /* min-height: 180px; */
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;

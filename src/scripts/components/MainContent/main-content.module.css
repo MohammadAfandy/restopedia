@@ -2,9 +2,6 @@
 .mainContent {
     display: block;
     padding-top: var(--appbar-height);
-    /* margin-top: var(--appbar-height); */
-    /* padding: 0 40px; */
     padding-bottom: 20px;
-    /* min-height: 400px; */
     min-height: calc(100vh - 70px);
 }

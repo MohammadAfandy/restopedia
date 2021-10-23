@@ -24,7 +24,7 @@ export default class LikeButton extends BaseElement {
 
   render() {
     return html`
-      <button class="${styles.likeButton}" .aria-label=${this.ariaLabel} @click=${this.onClickLike}>
+      <button class="${styles.likeButton}" aria-label="${this.ariaLabel}" @click=${this.onClickLike}>
         <i
           class="${this.isLiked ? 'fa fa-heart' : 'fa fa-heart-o'}"
           aria-hidden="true"
