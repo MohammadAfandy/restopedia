@@ -73,6 +73,8 @@ registerRoute(
  * so for the below case (CacheFirst strategies), we use CacheableResponsePlugin
  * CacheableResponsePlugin will force caching of opaque responses
  * @see https://developers.google.com/web/tools/workbox/guides/handle-third-party-requests
+ * and beware of high quota usage in opaque response
+ * @see https://developers.google.com/web/tools/workbox/guides/storage-quota#beware_of_opaque_responses
  */
 registerRoute(
   ({ request, url }) => (
@@ -88,6 +90,7 @@ registerRoute(
       new ExpirationPlugin({
         maxEntries: 60,
         maxAgeSeconds: 24 * 60 * 60, // 1 Days
+        purgeOnQuotaError: true,
       }),
     ],
   }),
@@ -107,6 +110,7 @@ registerRoute(
       new ExpirationPlugin({
         maxEntries: 60,
         maxAgeSeconds: 24 * 60 * 60, // 1 Days
+        purgeOnQuotaError: true,
       }),
     ],
   }),
