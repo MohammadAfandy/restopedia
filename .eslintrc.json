@@ -14,6 +14,7 @@
     "indent": ["error", 2, { "ignoredNodes": ["TemplateLiteral *"] }],
     "prefer-arrow-callback": "off",
     "no-underscore-dangle": ["error", { "allow": ["__WB_MANIFEST"] }],
+    "linebreak-style": ["off"],
     "import/no-extraneous-dependencies": ["off"]
   }
 }
