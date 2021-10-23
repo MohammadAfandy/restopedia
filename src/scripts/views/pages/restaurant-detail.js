@@ -35,8 +35,6 @@ class RestaurantDetailPage extends BasePage {
       restoDetailElement.onAfterAddReview = async () => {
         await this.afterRender();
       };
-      document.querySelector('#content').append(document.createElement('like-button'));
-      this.likeButton = document.querySelector('like-button');
       this.renderLikeButton();
     } else {
       this.renderEmpty();
@@ -44,6 +42,11 @@ class RestaurantDetailPage extends BasePage {
   }
 
   static async renderLikeButton() {
+    const likeButton = document.querySelector('like-button');
+    if (!likeButton) {
+      document.querySelector('#content').append(document.createElement('like-button'));
+    }
+    this.likeButton = document.querySelector('like-button');
     if (await FavoriteRestaurantDB.isExist(this.restaurant.id)) {
       this.renderLikedButton();
     } else {
