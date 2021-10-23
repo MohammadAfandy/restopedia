@@ -1,5 +1,5 @@
-const NotificationHelper = {
-  sendNotification({ title, options }) {
+class NotificationHelper {
+  static sendNotification({ title, options }) {
     if (!this.checkAvailability()) {
       console.log('Notification not supported in this browser');
       return;
@@ -12,17 +12,17 @@ const NotificationHelper = {
     }
 
     this.showNotification({ title, options });
-  },
+  }
 
-  checkAvailability() {
+  static checkAvailability() {
     return !!('Notification' in window);
-  },
+  }
 
-  checkPermission() {
+  static checkPermission() {
     return Notification.permission === 'granted';
-  },
+  }
 
-  async requestPermission() {
+  static async requestPermission() {
     const status = await Notification.requestPermission();
 
     if (status === 'denied') {
@@ -32,16 +32,12 @@ const NotificationHelper = {
     if (status === 'default') {
       console.log('Permission closed');
     }
-  },
+  }
 
-  async showNotification({ title, options }) {
+  static async showNotification({ title, options }) {
     const serviceWorkerRegistration = await navigator.serviceWorker.ready;
-    console.log({
-      title, options,
-    });
     serviceWorkerRegistration.showNotification(title, options);
-  },
-
-};
+  }
+}
 
 export default NotificationHelper;

@@ -17,7 +17,7 @@ class RestaurantPage extends BasePage {
   }
 
   static async afterRender() {
-    this.emptyElement = document.querySelector('#error_content');
+    this.errorContent = document.querySelector('#error_content');
     this.renderAllRestaurants();
 
     // for search event in hero element
@@ -37,7 +37,7 @@ class RestaurantPage extends BasePage {
   }
 
   static async renderEmpty(text) {
-    this.emptyElement.innerHTML = `<i class="fa fa-frown-o" aria-hidden="true"></i> ${text}`;
+    this.errorContent.innerHTML = `<i class="fa fa-frown-o" aria-hidden="true"></i> ${text}`;
   }
 
   static async renderRestaurantList(getRestaurantsFn, emptyText) {
@@ -50,7 +50,7 @@ class RestaurantPage extends BasePage {
     restoListElement.restaurants = restaurants;
 
     if (restaurants.length) {
-      this.emptyElement.innerHTML = '';
+      this.errorContent.innerHTML = '';
     } else {
       this.renderEmpty(emptyText);
     }

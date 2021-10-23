@@ -75,53 +75,53 @@ module.exports = {
       swDest: 'service-worker.js',
     }),
   ],
-  // optimization: {
-  //   minimize: true,
-  //   minimizer: [
-  //     // don't generate bundle.license.txt file
-  //     new TerserPlugin({
-  //       terserOptions: {
-  //         format: {
-  //           comments: false,
-  //         },
-  //       },
-  //       extractComments: false,
-  //     }),
-  //     new CssMinimizerPlugin({
-  //       minimizerOptions: {
-  //         preset: [
-  //           'default',
-  //           {
-  //             discardComments: { removeAll: true },
-  //           },
-  //         ],
-  //       },
-  //     }),
-  //   ],
-  //   splitChunks: {
-  //     chunks: 'all',
-  //     minSize: 20000,
-  //     maxSize: 70000,
-  //     // minRemainingSize: 0,
-  //     minChunks: 1,
-  //     maxAsyncRequests: 30,
-  //     maxInitialRequests: 30,
-  //     enforceSizeThreshold: 50000,
-  //     cacheGroups: {
-  //       defaultVendors: {
-  //         test: /[\\/]node_modules[\\/]/,
-  //         priority: -10,
-  //         reuseExistingChunk: true,
-  //       },
-  //       default: {
-  //         minChunks: 2,
-  //         priority: -20,
-  //         reuseExistingChunk: true,
-  //       },
-  //     },
-  //   },
-  // },
-  // performance: {
-  //   maxAssetSize: 300000,
-  // },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      // don't generate bundle.license.txt file
+      new TerserPlugin({
+        terserOptions: {
+          format: {
+            comments: false,
+          },
+        },
+        extractComments: false,
+      }),
+      new CssMinimizerPlugin({
+        minimizerOptions: {
+          preset: [
+            'default',
+            {
+              discardComments: { removeAll: true },
+            },
+          ],
+        },
+      }),
+    ],
+    splitChunks: {
+      chunks: 'all',
+      minSize: 20000,
+      maxSize: 70000,
+      // minRemainingSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
+      enforceSizeThreshold: 50000,
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          reuseExistingChunk: true,
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true,
+        },
+      },
+    },
+  },
+  performance: {
+    maxAssetSize: 300000,
+  },
 };

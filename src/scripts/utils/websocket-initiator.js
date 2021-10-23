@@ -1,14 +1,19 @@
 import API_ENDPOINT from '../globals/api-endpoint';
 import NotificationHelper from './notification-helper';
+import BaseHelper from './base-helper';
 
-const WebSocketInitiator = {
-  init(url) {
+class WebSocketInitiator {
+  static init(url) {
     const webSocket = new WebSocket(url);
-    console.log('connected to websocket', url);
     webSocket.onmessage = this.onMessageHandler;
-  },
-  onMessageHandler(message) {
-    const { name, description, pictureId } = JSON.parse(message.data);
+  }
+
+  static onMessageHandler(message) {
+    const {
+      name,
+      description,
+      pictureId,
+    } = BaseHelper.safeParseJSON(message.data);
 
     NotificationHelper.sendNotification({
       title: `${name} is trending`,
@@ -17,7 +22,7 @@ const WebSocketInitiator = {
         image: API_ENDPOINT.IMAGE(pictureId, 'small'),
       },
     });
-  },
-};
+  }
+}
 
 export default WebSocketInitiator;

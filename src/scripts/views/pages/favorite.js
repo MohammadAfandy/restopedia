@@ -15,7 +15,7 @@ class FavoritePage extends BasePage {
   }
 
   static async afterRender() {
-    this.emptyElement = document.querySelector('#error_content');
+    this.errorContent = document.querySelector('#error_content');
     const restoListElement = document.querySelector('resto-list');
 
     restoListElement.isLoading = true;
@@ -25,7 +25,7 @@ class FavoritePage extends BasePage {
     restoListElement.restaurants = favoriteRestaurants;
 
     if (favoriteRestaurants.length) {
-      this.emptyElement.innerHTML = '';
+      this.errorContent.innerHTML = '';
     } else {
       this.renderEmpty();
     }
@@ -33,7 +33,7 @@ class FavoritePage extends BasePage {
 
   static async renderEmpty() {
     const text = 'You haven\'t added favorite restaurant yet';
-    this.emptyElement.innerHTML = `<i class="fa fa-frown-o" aria-hidden="true"></i> ${text}`;
+    this.errorContent.innerHTML = `<i class="fa fa-frown-o" aria-hidden="true"></i> ${text}`;
   }
 }
 

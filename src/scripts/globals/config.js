@@ -1,5 +1,3 @@
-// console.log('env webpack', process.env.WEBPACK_MODE);
-
 const CONFIG = {
   APP_NAME: 'Restopedia',
   API_KEY: '12345',

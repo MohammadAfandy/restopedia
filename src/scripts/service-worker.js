@@ -42,16 +42,14 @@ setCacheNameDetails({
 /**
  * Pre cache web manifest on build time (I think it's like caching app shell)
  *
- * IMPORTANT: write "self.__WB_MANIFEEST" only once in this file
- * it will throw error "Multiple instances of self.__WB_MANIFEEST"
- * even if the "self.__WB_MANIFEEST" is just a comment
+ * IMPORTANT: write 'self.__WB_MANIFEEST' only once in this file
+ * because it will throw error 'Multiple instances of self.__WB_MANIFEEST'
+ * even if the 'self.__WB_MANIFEEST' is just a comment
  * and because of that reason, I don't spell it correctly in the comment above
  * @see https://github.com/quasarframework/quasar/issues/8486#issuecomment-900982267
  */
-
 precacheAndRoute(self.__WB_MANIFEST);
 
-// Cache the Google Fonts assets with a stale-while-revalidate strategy.
 registerRoute(
   ({ url }) => (
     url.origin === 'https://fonts.googleapis.com'
@@ -62,7 +60,6 @@ registerRoute(
   }),
 );
 
-// Cache the Font Awesome assets with a stale-while-revalidate strategy.
 registerRoute(
   ({ url }) => (url.origin.endsWith('.fontawesome.com')),
   new StaleWhileRevalidate({
@@ -74,8 +71,7 @@ registerRoute(
  * In general, Workbox will not cache opaque responses (from 3rd party / different origin).
  * However, workbox will allow it if it's using NetworkFirst or StaleWhileRevalidate strategies
  * so for the below case (CacheFirst strategies), we use CacheableResponsePlugin
- * CacheableResponsePlugin force caching of opaque responses
- * and note that we shouldn't set the expiration for too long
+ * CacheableResponsePlugin will force caching of opaque responses
  * @see https://developers.google.com/web/tools/workbox/guides/handle-third-party-requests
  */
 registerRoute(
@@ -97,7 +93,6 @@ registerRoute(
   }),
 );
 
-// serve restaurants data from networks, but if it takes too long, serve it from cache
 registerRoute(
   ({ url }) => (url.origin === 'https://restaurant-api.dicoding.dev'),
   new NetworkFirst({
@@ -112,7 +107,6 @@ registerRoute(
   }),
 );
 
-// Cache images with a cache-first strategy for 30 days.
 registerRoute(
   ({ request }) => request.destination === 'image',
   new CacheFirst({
@@ -126,9 +120,11 @@ registerRoute(
   }),
 );
 
-// Cache .css and .js file with a stale-while-revalidate strategy.
 registerRoute(
-  ({ request }) => (request.destination === 'script' || request.destination === 'style'),
+  ({ request }) => (
+    request.destination === 'script'
+    || request.destination === 'style'
+  ),
   new StaleWhileRevalidate({
     cacheName: 'static-resources',
   }),

@@ -19,6 +19,7 @@ class RestaurantDetailPage extends BasePage {
   }
 
   static async afterRender() {
+    this.errorContent = document.querySelector('#error_content');
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const restaurantId = UrlParser.parseIdFromSlug(url.id);
 
@@ -28,11 +29,8 @@ class RestaurantDetailPage extends BasePage {
     await BaseHelper.sleep(1000);
     restoDetailElement.isLoading = false;
 
-    if (!this.restaurant) {
-      this.renderEmpty();
-    } else {
+    if (this.restaurant) {
       restoDetailElement.restaurant = this.restaurant;
-
       // rerender page after add review
       restoDetailElement.onAfterAddReview = async () => {
         await this.afterRender();
@@ -40,6 +38,8 @@ class RestaurantDetailPage extends BasePage {
       document.querySelector('#content').append(document.createElement('like-button'));
       this.likeButton = document.querySelector('like-button');
       this.renderLikeButton();
+    } else {
+      this.renderEmpty();
     }
   }
 
@@ -86,9 +86,8 @@ class RestaurantDetailPage extends BasePage {
   }
 
   static async renderEmpty() {
-    const emptyElement = document.querySelector('#error_content');
     const text = 'Sorry, we couldn\'t load this restaurant';
-    emptyElement.innerHTML = `<i class="fa fa-frown-o" aria-hidden="true"></i> ${text}`;
+    this.errorContent.innerHTML = `<i class="fa fa-frown-o" aria-hidden="true"></i> ${text}`;
   }
 }
 
