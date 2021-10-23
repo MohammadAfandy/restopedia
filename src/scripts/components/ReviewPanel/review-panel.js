@@ -13,6 +13,7 @@ export default class ReviewPanel extends BaseElement {
 
     this.inputName = createRef();
     this.inputReview = createRef();
+    this.buttonSubmit = createRef();
   }
 
   static get properties() {
@@ -50,6 +51,7 @@ export default class ReviewPanel extends BaseElement {
       name: nameValue,
       review: reviewValue,
     };
+    this.buttonSubmit.value.setAttribute('disabled', true);
     const response = await RestaurantApi.addReview(reviewData);
 
     if (response.error === false) {
@@ -67,6 +69,7 @@ export default class ReviewPanel extends BaseElement {
         type: 'failed',
       });
     }
+    this.buttonSubmit.value.removeAttribute('disabled');
   }
 
   onFocusTextArea() {
@@ -122,7 +125,7 @@ export default class ReviewPanel extends BaseElement {
           ></textarea>
           <span>Review</span>
         </label>
-        <button type="submit" class="${styles.button}">
+        <button type="submit" class="${styles.button}" ${ref(this.buttonSubmit)}>
           <i class="fa fa-paper-plane" aria-hidden="true"></i>
           Send
         </button>

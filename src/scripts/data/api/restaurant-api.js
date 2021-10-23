@@ -63,7 +63,7 @@ class RestaurantApi {
       },
       body: JSON.stringify({ id, name, review }),
     });
-    if (error) return null;
+    if (error) return error;
 
     return responseData;
   }
