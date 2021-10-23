@@ -120,7 +120,7 @@ registerRoute(
     plugins: [
       new ExpirationPlugin({
         maxEntries: 20,
-        maxAgeSeconds: 5 * 60, // 5 minutes
+        maxAgeSeconds: 3 * 60, // 3 seconds
       }),
     ],
   }),
