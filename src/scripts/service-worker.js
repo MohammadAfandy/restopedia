@@ -116,11 +116,11 @@ registerRoute(
   ({ url }) => (url.origin === 'https://restaurant-api.dicoding.dev'),
   new NetworkFirst({
     cacheName: 'restaurants',
-    networkTimeoutSeconds: 5,
+    networkTimeoutSeconds: 3,
     plugins: [
       new ExpirationPlugin({
         maxEntries: 20,
-        maxAgeSeconds: 3 * 60, // 3 seconds
+        maxAgeSeconds: 5 * 60, // 5 minutes
       }),
     ],
   }),
