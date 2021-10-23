@@ -20,7 +20,7 @@ class FavoritePage extends BasePage {
 
     restoListElement.isLoading = true;
     const favoriteRestaurants = await FavoriteRestaurantDB.getAll();
-    await BaseHelper.sleep(1000);
+    // await BaseHelper.sleep(1000);
     restoListElement.isLoading = false;
     restoListElement.restaurants = favoriteRestaurants;
 

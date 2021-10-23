@@ -45,7 +45,7 @@ class RestaurantPage extends BasePage {
     restoListElement.isLoading = true;
     const restaurants = await getRestaurantsFn();
     // for the sake of skeleton loading, should be commented to increase speed :D
-    await BaseHelper.sleep(1000);
+    // await BaseHelper.sleep(1000);
     restoListElement.isLoading = false;
     restoListElement.restaurants = restaurants;
 

@@ -26,7 +26,7 @@ class RestaurantDetailPage extends BasePage {
     const restoDetailElement = document.querySelector('resto-detail');
     restoDetailElement.isLoading = true;
     this.restaurant = await RestaurantApi.detail(restaurantId);
-    await BaseHelper.sleep(1000);
+    // await BaseHelper.sleep(1000);
     restoDetailElement.isLoading = false;
 
     if (this.restaurant) {
