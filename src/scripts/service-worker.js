@@ -97,26 +97,6 @@ registerRoute(
 );
 
 registerRoute(
-  ({ request, url }) => (
-    request.destination === 'image'
-    && url.origin === 'https://avatar.oxro.io'
-  ),
-  new CacheFirst({
-    cacheName: 'avatar-images',
-    plugins: [
-      new CacheableResponsePlugin({
-        statuses: [0, 200],
-      }),
-      new ExpirationPlugin({
-        maxEntries: 60,
-        maxAgeSeconds: 24 * 60 * 60, // 1 Days
-        purgeOnQuotaError: true,
-      }),
-    ],
-  }),
-);
-
-registerRoute(
   ({ url }) => (url.origin === 'https://restaurant-api.dicoding.dev'),
   new NetworkFirst({
     cacheName: 'restaurants',

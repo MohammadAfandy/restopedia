@@ -4,6 +4,9 @@ const { InjectManifest } = require('workbox-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
+const imageMinPngQuant = require('imagemin-pngquant');
+const imageminMozjpeg = require('imagemin-mozjpeg');
 const path = require('path');
 
 module.exports = {
@@ -73,6 +76,17 @@ module.exports = {
     new InjectManifest({
       swSrc: path.resolve(__dirname, 'src/scripts/service-worker.js'),
       swDest: 'service-worker.js',
+    }),
+    new ImageminWebpackPlugin({
+      plugins: [
+        imageminMozjpeg({
+          quality: 50,
+          progressive: true,
+        }),
+        imageMinPngQuant({
+          quality: [0.3, 0.5],
+        }),
+      ],
     }),
   ],
   optimization: {

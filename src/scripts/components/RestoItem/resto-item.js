@@ -1,4 +1,6 @@
 import { BaseElement, html } from '../base-element';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import UrlParser from '../../utils/url-parser';
 import '../Star-Rating/star-rating';
 
@@ -49,8 +51,8 @@ export default class RestoItem extends BaseElement {
     return html`
       <div>
         <img
-          class="${styles.image}"
-          src="${picture && picture.small}"
+          class="${styles.image} lazyload"
+          data-src="${picture && picture.small}"
           alt="Restaurant ${name}"
           @error=${this.onErrorImage}
         />

@@ -7,7 +7,7 @@
             rgba(0, 0, 0, 0.4),
             rgba(0, 0, 0, 0.4)
         ),
-        url("../../../public/images/hero.jpg");
+        url("/images/hero-small.jpg");
     background-position: center;
 }
 
@@ -39,6 +39,12 @@
 @media screen and (min-width: 1200px) {
     .hero {
         min-width: 1000px;
+        background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+        ),
+        url("/images/hero-large.jpg");
     }
 
     .inner {  
