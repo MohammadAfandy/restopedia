@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "preinstall": "yum install -y nasm",
     "start-dev": "webpack-dev-server --config webpack.dev.js",
     "start-dev-analyzer": "webpack-dev-server --config webpack.dev.analyzer.js",
     "build": "webpack --config webpack.prod.js",
