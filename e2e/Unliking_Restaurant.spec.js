@@ -12,7 +12,7 @@ Scenario('unliking one restaurant', async ({ I }) => {
   I.amOnPage('/');
   const firstRestaurant = locate('resto-item a').first();
   I.click(firstRestaurant);
-  I.waitForElement('like-button button[aria-label="Like this restaurant"]', 5);
+  I.seeElement('like-button button[aria-label="Like this restaurant"]');
   I.click('like-button button[aria-label="Like this restaurant"]');
 
   I.amOnPage('/#/favorites');
@@ -21,7 +21,7 @@ Scenario('unliking one restaurant', async ({ I }) => {
   const firstRestaurantLiked = locate('resto-item a').first();
 
   I.click(firstRestaurantLiked);
-  I.waitForElement('like-button button[aria-label="Unlike this restaurant"]', 5);
+  I.seeElement('like-button button[aria-label="Unlike this restaurant"]');
   I.click('like-button button[aria-label="Unlike this restaurant"]');
 
   I.amOnPage('/#/favorites');
@@ -39,7 +39,7 @@ Scenario('unliking multiple restaurants', async ({ I }) => {
     resto.push(await I.grabTextFrom(selectedRestaurant));
     I.click(selectedRestaurant);
 
-    I.waitForElement('like-button button[aria-label="Like this restaurant"]', 5);
+    I.seeElement('like-button button[aria-label="Like this restaurant"]');
     I.click('like-button button[aria-label="Like this restaurant"]');
     I.amOnPage('/');
   }
@@ -54,7 +54,7 @@ Scenario('unliking multiple restaurants', async ({ I }) => {
     const firstRestaurantLikedFound = locate('resto-item a').first();
     I.click(firstRestaurantLikedFound);
 
-    I.waitForElement('like-button button[aria-label="Unlike this restaurant"]', 5);
+    I.seeElement('like-button button[aria-label="Unlike this restaurant"]');
     I.click('like-button button[aria-label="Unlike this restaurant"]');
     I.amOnPage('/#/favorites');
   }

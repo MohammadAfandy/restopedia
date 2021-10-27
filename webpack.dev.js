@@ -7,6 +7,7 @@ module.exports = merge(common, {
   // to fix syntax error on workbox when minimizer is true and on dev mode
   devtool: 'eval-cheap-source-map',
   devServer: {
+    port: 9191,
     contentBase: path.resolve(__dirname, 'dist'),
   },
 });

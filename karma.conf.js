@@ -1,5 +1,7 @@
+// needed to handle error on import css
 const webpack = require('./webpack.test');
-const isCIMode = process.env.CI === 'true';
+
+const isCIMode = process.env.HEADLESS;
 
 // Karma configuration
 // Generated on Fri Jul 03 2020 20:15:52 GMT+0700 (Western Indonesia Time)

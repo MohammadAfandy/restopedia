@@ -26,7 +26,13 @@ jobs:
     - name: Run Test
       run: npm run test
       env:
-        CI: true
+        HEADLESS: true
+    - name: Run App in Background
+      run: npm run start-dev
+    - name: Run E2E Testing
+      run: npm run e2e
+      env:
+        HEADLESS: true
 
   deploy:
     needs: build
@@ -37,6 +43,6 @@ jobs:
         uses: amondnet/vercel-action@v20
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           vercel-args: '--prod'

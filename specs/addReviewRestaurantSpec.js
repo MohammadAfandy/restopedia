@@ -79,7 +79,7 @@ describe('Add Restaurant Review', () => {
     spyOn(RestaurantApi, 'addReview').and.returnValue({
       error: false,
       message: 'success',
-      customerReviews: { ...postReviewData, date },
+      customerReviews: [{ ...postReviewData, date }],
     });
 
     const restoReviewElement = document.querySelector('resto-review');

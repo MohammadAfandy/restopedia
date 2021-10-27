@@ -9,9 +9,17 @@ exports.config = {
   output: 'e2e/outputs',
   helpers: {
     Puppeteer: {
-      url: 'http://localhost:8081',
+      url: 'http://localhost:9191',
       show: true,
       windowSize: '1280x720',
+      chrome: {
+        args: [
+          '--disable-web-security',
+        ],
+      },
+    },
+    MockRequestHelper: {
+      require: '@codeceptjs/mock-request',
     },
   },
   include: {

@@ -21,7 +21,7 @@ Scenario('liking one restaurant', async ({ I }) => {
   const firstRestaurantName = await I.grabTextFrom(firstRestaurant);
   I.click(firstRestaurant);
 
-  I.waitForElement('like-button button[aria-label="Like this restaurant"]', 5);
+  I.seeElement('like-button button[aria-label="Like this restaurant"]');
   I.click('like-button button[aria-label="Like this restaurant"]');
 
   I.amOnPage('/#/favorites');
@@ -43,13 +43,13 @@ Scenario('liking multiple restaurants', async ({ I }) => {
     resto.push(await I.grabTextFrom(selectedRestaurant));
     I.click(selectedRestaurant);
 
-    I.waitForElement('like-button button[aria-label="Like this restaurant"]', 5);
+    I.seeElement('like-button button[aria-label="Like this restaurant"]');
     I.click('like-button button[aria-label="Like this restaurant"]');
     I.amOnPage('/');
   }
 
   I.amOnPage('/#/favorites');
-  I.wait(1);
+  I.wait(2);
   const restoElementCount = await I.grabNumberOfVisibleElements('resto-item');
 
   assert.strictEqual(resto.length, restoElementCount);
