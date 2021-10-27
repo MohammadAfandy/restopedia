@@ -5,29 +5,29 @@ describe('URL Parser', () => {
     it('should be able to split url string with only resource property', async () => {
       const url = '/restaurants';
       const splitted = UrlParser.urlSplitter(url);
-  
+
       expect(splitted).toEqual({
         resource: 'restaurants',
         id: null,
         verb: null,
       });
     });
-  
+
     it('should be able to split url string with resource and id property', async () => {
       const url = '/restaurants/istana-emas-ygewwl55ktckfw1e867';
       const splitted = UrlParser.urlSplitter(url);
-  
+
       expect(splitted).toEqual({
         resource: 'restaurants',
         id: 'istana-emas-ygewwl55ktckfw1e867',
         verb: null,
       });
     });
-  
+
     it('should be able to split url string with resource, id, and verb property', async () => {
       const url = '/restaurants/istana-emas-ygewwl55ktckfw1e867/post';
       const splitted = UrlParser.urlSplitter(url);
-  
+
       expect(splitted).toEqual({
         resource: 'restaurants',
         id: 'istana-emas-ygewwl55ktckfw1e867',

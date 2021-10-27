@@ -3,7 +3,6 @@ import * as TestFactories from './helpers/testFactories';
 import { addLikeButtonContainer, SnackBarInitiator } from './helpers/likeRestaurantSetup';
 
 describe('Liking A Restaurant', () => {
-
   beforeEach(() => {
     addLikeButtonContainer();
   });
@@ -32,13 +31,12 @@ describe('Liking A Restaurant', () => {
     await document.querySelector('like-button button').dispatchEvent(new Event('click'));
 
     const restaurant = await FavoriteRestaurantDB.get(1);
-    
+
     expect(restaurant).toEqual(jasmine.objectContaining({ id: 1 }));
 
     expect(SnackBarInitiator.show).toHaveBeenCalledWith({
       text: 'Restaurant has been added to favorite',
     });
-
   });
 
   it('should not add a restaurant again when its already liked', async () => {
@@ -48,7 +46,6 @@ describe('Liking A Restaurant', () => {
     await document.querySelector('like-button button').dispatchEvent(new Event('click'));
 
     expect(await FavoriteRestaurantDB.getAll()).toEqual([jasmine.objectContaining({ id: 1 })]);
-
   });
 
   it('should not add a restaurant when it has no id', async () => {

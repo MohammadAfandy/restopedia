@@ -21,10 +21,12 @@ jobs:
       run: npm ci
     - name: Run Lint
       run: npm run lint
-    - name: Build Project 
+    - name: Build Project
       run: npm run build
     - name: Run Test
       run: npm run test
+      env:
+        CI: true
 
   deploy:
     needs: build
