@@ -1,3 +1,5 @@
+const webpack = require('./webpack.test');
+
 // Karma configuration
 // Generated on Fri Jul 03 2020 20:15:52 GMT+0700 (Western Indonesia Time)
 module.exports = function (config) {
@@ -24,14 +26,15 @@ module.exports = function (config) {
       'specs/**/*Spec.js': ['webpack', 'sourcemap'],
     },
 
-    webpack: {
-      // karma watches the test entry points
-      // (you don't need to specify the entry option)
-      // webpack watches dependencies
-      // webpack configuration
-      devtool: 'inline-source-map',
-      mode: 'development',
-    },
+    // webpack: {
+    //   // karma watches the test entry points
+    //   // (you don't need to specify the entry option)
+    //   // webpack watches dependencies
+    //   // webpack configuration
+    //   devtool: 'inline-source-map',
+    //   mode: 'development',
+    // },
+    webpack,
 
     webpackMiddleware: {
       // webpack-dev-middleware configuration
@@ -42,7 +45,7 @@ module.exports = function (config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['spec'],
 
     // web server port
     port: 9876,

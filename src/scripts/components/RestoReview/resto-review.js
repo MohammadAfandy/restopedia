@@ -1,14 +1,13 @@
 import { ref, createRef } from 'lit/directives/ref';
 import { BaseElement, html } from '../base-element';
 import SnackBarInitiator from '../../utils/snackbar-initiator';
-import RestaurantApi from '../../data/api/restaurant-api';
 
-import styles from './review-panel.module.css';
+import styles from './resto-review.module.css';
 
-export default class ReviewPanel extends BaseElement {
+export default class RestoReview extends BaseElement {
   constructor() {
     super();
-    this.classList.add(styles.reviewPanel);
+    this.classList.add(styles.restoReview);
     this.reviews = [];
 
     this.inputName = createRef();
@@ -20,7 +19,7 @@ export default class ReviewPanel extends BaseElement {
     return {
       restaurantId: { type: String },
       reviews: { type: Array },
-      onAfterAddReview: { type: Function },
+      postReview: { type: Function },
     };
   }
 
@@ -29,6 +28,7 @@ export default class ReviewPanel extends BaseElement {
 
     const nameValue = this.inputName.value.value;
     const reviewValue = this.inputReview.value.value;
+    const buttonSubmit = this.buttonSubmit.value;
 
     if (nameValue.trim() === '') {
       SnackBarInitiator.show({
@@ -51,25 +51,18 @@ export default class ReviewPanel extends BaseElement {
       name: nameValue,
       review: reviewValue,
     };
-    this.buttonSubmit.value.setAttribute('disabled', true);
-    const response = await RestaurantApi.addReview(reviewData);
 
+    buttonSubmit.setAttribute('disabled', true);
+    buttonSubmit.querySelector('.fa-paper-plane').style.display = 'none';
+    buttonSubmit.querySelector('.fa-spinner').style.display = 'inline-block';
+    const response = await this.postReview(reviewData);
     if (response.error === false) {
       this.inputName.value.value = '';
       this.inputReview.value.value = '';
-
-      SnackBarInitiator.show({
-        text: 'Your review has been added',
-      });
-
-      this.onAfterAddReview();
-    } else {
-      SnackBarInitiator.show({
-        text: response.message,
-        type: 'failed',
-      });
     }
-    this.buttonSubmit.value.removeAttribute('disabled');
+    buttonSubmit.removeAttribute('disabled');
+    buttonSubmit.querySelector('.fa-paper-plane').style.display = 'inline-block';
+    buttonSubmit.querySelector('.fa-spinner').style.display = 'none';
   }
 
   onFocusTextArea() {
@@ -86,21 +79,25 @@ export default class ReviewPanel extends BaseElement {
   render() {
     return html`
       <ul>
-        ${this.reviews.map((review) => html`
-          <li class="${styles.container}" tabindex="0">
-            <div class="${styles.profile}">
-              <img
-                class="${styles.avatar}"
-                src="https://avatar.oxro.io/avatar.svg?name=${review.name}"
-                alt="${review.name}"
-              >
-              <div class="${styles.desc}">
-                <span class="${styles.name}">${review.name}</span>
-                <span class="${styles.date}">${review.date}</span>
+        ${this.reviews.length
+          ? this.reviews.map((review) => html`
+            <li class="${styles.container} review_container" tabindex="0">
+              <div class="${styles.profile}">
+                <img
+                  class="${styles.avatar}"
+                  src="https://avatar.oxro.io/avatar.svg?name=${review.name}"
+                  alt="${review.name}"
+                >
+                <div class="${styles.desc}">
+                  <span class="${styles.name} reviewer_name">${review.name}</span>
+                  <span class="${styles.date} reviewer_date">${review.date}</span>
+                </div>
               </div>
-            </div>
-            <p class="${styles.review}">${review.review}</p>
-        `)}
+              <p class="${styles.review} reviewer_review">${review.review}</p>
+            </li>
+          `)
+          : html`<li class="${styles.container} ${styles.center}">No reviews found</li>`
+        }
       </ul>
       <form class="${styles.addReview}" @submit=${this.onSubmitReview}>
         <div class="${styles.formTitle}">Leave your review here ...</div>
@@ -127,11 +124,12 @@ export default class ReviewPanel extends BaseElement {
         </label>
         <button type="submit" class="${styles.button}" ${ref(this.buttonSubmit)}>
           <i class="fa fa-paper-plane" aria-hidden="true"></i>
-          Send
+          <i class="fas fa-spinner fa-spin" aria-hidden="true" style="display: none;"></i>
+          <span>Send</span>
         </button>
       </form>
     `;
   }
 }
 
-customElements.define('review-panel', ReviewPanel);
+if (customElements.get('resto-review') === undefined) customElements.define('resto-review', RestoReview);

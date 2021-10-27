@@ -34,4 +34,4 @@ export default class LikeButton extends BaseElement {
   }
 }
 
-customElements.define('like-button', LikeButton);
+if (customElements.get('like-button') === undefined) customElements.define('like-button', LikeButton);

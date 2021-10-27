@@ -61,7 +61,11 @@ export default class AppBar extends BaseElement {
 
   render() {
     return html`
-      <img class="${styles.logo}" src="${this.logo}" alt="Logo ${this.title}" />
+      <img
+        class="${styles.logo}"
+        src="${this.logo}"
+        alt="Logo ${this.title}"
+      />
       <h1 class="${styles.title}">
         <a href="#/">${this.title}</a>
       </h1>

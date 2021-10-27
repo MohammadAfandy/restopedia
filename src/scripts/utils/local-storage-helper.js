@@ -18,6 +18,10 @@ class LocalStorageHelper {
   static remove(key) {
     return this.isStorageExist() && localStorage.removeItem(key);
   }
+
+  static clear() {
+    return this.isStorageExist() && localStorage.clear();
+  }
 }
 
 export default LocalStorageHelper;

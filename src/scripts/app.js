@@ -1,16 +1,15 @@
-import UrlParser from '../utils/url-parser';
-import routes from '../routes/routes';
+import UrlParser from './utils/url-parser';
+import routes from './routes/routes';
 
 // import initial component to create app shell
-import '../components/AppBar/app-bar';
-import '../components/MainContent/main-content';
-import '../components/SkipToContent/skip-to-content';
-import '../components/SnackBar/snack-bar';
-import '../components/SkeletonElement/skeleton-element';
+import './components/AppBar/app-bar';
+import './components/MainContent/main-content';
+import './components/SkipToContent/skip-to-content';
+import './components/SkeletonElement/skeleton-element';
 
 // import initiator
-import DarkModeHelper from '../utils/dark-mode-helper';
-import SnackBarInitiator from '../utils/snackbar-initiator';
+import DarkModeHelper from './utils/dark-mode-helper';
+import SnackBarInitiator from './utils/snackbar-initiator';
 
 class App {
   constructor() {

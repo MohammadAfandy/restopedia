@@ -1,7 +1,8 @@
+import { unsafeHTML } from 'lit/directives/unsafe-html';
 import { BaseElement, html } from '../base-element';
+import RestoReviewView from '../../views/resto-review-view';
 import '../TabElement/tab-element';
 import '../MenuPanel/menu-panel';
-import '../ReviewPanel/review-panel';
 import '../Star-Rating/star-rating';
 
 import styles from './resto-detail.module.css';
@@ -12,6 +13,7 @@ export default class RestoDetail extends BaseElement {
     this.classList.add(styles.restoDetail);
     this.restaurant = null;
     this.isLoading = false;
+    this.errorText = '';
   }
 
   static get properties() {
@@ -19,12 +21,12 @@ export default class RestoDetail extends BaseElement {
       restaurant: { type: Object },
       onAfterAddReview: { type: Function },
       isLoading: { type: Boolean },
+      errorText: { type: String },
     };
   }
 
-  render() {
-    const renderSkeleton = () => html`
-      <h2 class="${styles.title}">Detail Restaurant</h2>
+  renderLoading() {
+    return html`
       <div class="${styles.container}">
         <div class="${styles.detail}">
           <skeleton-element .height=${'360px'}></skeleton-element>
@@ -41,12 +43,17 @@ export default class RestoDetail extends BaseElement {
         ></tab-element>
       </div>
     `;
+  }
 
-    if (this.isLoading) return renderSkeleton();
-    if (!this.restaurant) return html``;
+  renderError() {
+    import('../ErrorElement/error-element');
+    return html`
+      <error-element .text=${this.errorText}></error-element>
+    `;
+  }
 
+  renderSuccess() {
     const {
-      id,
       name,
       picture,
       city,
@@ -55,19 +62,13 @@ export default class RestoDetail extends BaseElement {
       description,
       categoriesName,
       menus,
-      customerReviews,
     } = this.restaurant;
 
     const tabs = [
       {
         name: 'Review',
         isActive: true,
-        content: html`
-          <review-panel
-            .restaurantId=${id}
-            .reviews=${customerReviews || []}
-            .onAfterAddReview=${this.onAfterAddReview && this.onAfterAddReview.bind(this)}
-          ></review-panel>`,
+        content: html`${unsafeHTML(RestoReviewView.getTemplate())}`,
       },
       {
         name: 'Menu',
@@ -77,10 +78,17 @@ export default class RestoDetail extends BaseElement {
     ];
 
     return html`
-      <h2 class="${styles.title}">Detail Restaurant</h2>
       <div class="${styles.container}">
         <div class="${styles.detail}">
-          <img class="${styles.image}" alt="Restaurant ${name}" src="${picture && picture.large}">
+          <picture>
+            <source media="(min-width: 1200px)" srcset="${picture && picture.large}">
+            <source media="(min-width: 768px)" srcset="${picture && picture.medium}">
+            <img
+              class="${styles.image}"
+              src="${picture && picture.small}"
+              alt="Restaurant ${name}"
+            >
+          </picture>
           <div class="${styles.subtitle}">
             <div>
               <h3>${name}</h3>
@@ -112,6 +120,13 @@ export default class RestoDetail extends BaseElement {
         ></tab-element>
       </div>
     `;
+  }
+
+  render() {
+    if (this.isLoading) return this.renderLoading();
+    if (this.errorText !== '') return this.renderError();
+    if (!this.restaurant) return this.renderError();
+    return this.renderSuccess();
   }
 }
 

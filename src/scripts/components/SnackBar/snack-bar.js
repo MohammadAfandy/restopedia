@@ -67,4 +67,4 @@ export default class SnackBar extends BaseElement {
   }
 }
 
-customElements.define('snack-bar', SnackBar);
+if (customElements.get('snack-bar') === undefined) customElements.define('snack-bar', SnackBar);

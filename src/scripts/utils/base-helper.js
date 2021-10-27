@@ -10,6 +10,14 @@ class BaseHelper {
       return null;
     }
   }
+
+  static setLoading(selectorName) {
+    document.querySelector(selectorName).isLoading = true;
+  }
+
+  static stopLoading(selectorName) {
+    document.querySelector(selectorName).isLoading = false;
+  }
 }
 
 export default BaseHelper;

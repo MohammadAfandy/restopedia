@@ -1,8 +1,8 @@
 import 'regenerator-runtime'; /* for async await transpile */
 import '../styles/main.css';
-import App from './views/app';
-import CONFIG from './globals/config';
+import App from './app';
 import swRegister from './utils/sw-register';
+import CONFIG from './globals/config';
 import WebSocketInitiator from './utils/websocket-initiator';
 
 const app = new App();

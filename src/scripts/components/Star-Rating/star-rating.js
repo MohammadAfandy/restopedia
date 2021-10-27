@@ -41,7 +41,7 @@ export default class StarRating extends BaseElement {
 
     return html`
       ${[...Array(fullStarCount)].map(() => renderStar('fa fa-star'))}
-      ${[...Array(halfStarCount)].map(() => renderStar('fa fa-star-half'))}
+      ${[...Array(halfStarCount)].map(() => renderStar('fa fa-star-half-o'))}
       ${[...Array(emptyStarCount)].map(() => renderStar('fa fa-star-o'))}
 
       ${this.showRating ? html`

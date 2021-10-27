@@ -1,7 +1,7 @@
-import RestaurantPage from '../views/pages/restaurant';
-import RestaurantDetailPage from '../views/pages/restaurant-detail';
-import FavoritePage from '../views/pages/favorite';
-import NotFoundPage from '../views/pages/not-found';
+import RestaurantPage from '../pages/restaurant';
+import RestaurantDetailPage from '../pages/restaurant-detail';
+import FavoritePage from '../pages/favorite';
+import NotFoundPage from '../pages/not-found';
 
 const routes = {
   '/': RestaurantPage, // default page

@@ -3,7 +3,7 @@
  * this is to avoid Page Class doesn't have expected method
  * such as render and afterRendeer method
  */
-class BasePage {
+export default class BasePage {
   constructor() {
     if (this.constructor === BasePage) {
       throw new TypeError(`Abstract class "${this.constructor.name}" cannot be instantiated directly.`);
@@ -18,5 +18,3 @@ class BasePage {
     throw new TypeError('Abstract method, cannot be access directly.');
   }
 }
-
-export default BasePage;

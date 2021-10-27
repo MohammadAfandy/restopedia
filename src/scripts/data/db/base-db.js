@@ -32,6 +32,7 @@ class BaseDB {
   }
 
   static async get(id) {
+    if (!id) return null;
     return (await this.dbPromise).get(this.objectStoreName, id);
   }
 
