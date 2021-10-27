@@ -5,7 +5,7 @@ const CONFIG = {
   CACHE_NAME: `RESTOPEDIA-V1-${new Date().getTime()}`,
   DATABASE_NAME: 'restopedia-database',
   DATABASE_VERSION: 1,
-  WEB_SOCKET_SERVER: 'wss://restopedia.mohammadafandy.com', // notification every 1 minute
+  WEB_SOCKET_SERVER: 'wss://restopedia-ws.mohammadafandy.com', // notification every 1 minute
   HERO_IMAGE: {
     LARGE: '/images/hero-large.jpg',
     SMALL: '/images/hero-small.jpg',
