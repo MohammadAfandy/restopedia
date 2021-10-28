@@ -6,6 +6,7 @@ import './components/AppBar/app-bar';
 import './components/MainContent/main-content';
 import './components/SkipToContent/skip-to-content';
 import './components/SkeletonElement/skeleton-element';
+import './components/FooterElement/footer-element';
 
 // import initiator
 import DarkModeHelper from './utils/dark-mode-helper';

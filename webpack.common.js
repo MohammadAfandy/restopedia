@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
 const imageMinPngQuant = require('imagemin-pngquant');
 const imageminMozjpeg = require('imagemin-mozjpeg');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
 
 module.exports = {
@@ -88,6 +89,27 @@ module.exports = {
         }),
       ],
     }),
+    new WebpackPwaManifest({
+      name: 'Restopedia',
+      short_name: 'Restopedia',
+      description: 'Find any restaurants easily ',
+      background_color: '#ffffff',
+      theme_color: '#d84315',
+      crossorigin: 'use-credentials',
+      start_url: '/index.html',
+      icons: [
+        {
+          src: path.resolve(__dirname, 'src/public/images/logo.png'),
+          sizes: [96, 128, 192, 256, 384, 512],
+          purpose: 'maskable',
+        },
+        {
+          src: path.resolve(__dirname, 'src/public/images/logo.png'),
+          sizes: '144x144',
+          purpose: 'any',
+        },
+      ],
+    }),
   ],
   optimization: {
     minimize: true,
@@ -116,7 +138,6 @@ module.exports = {
       chunks: 'all',
       minSize: 20000,
       maxSize: 70000,
-      // minRemainingSize: 0,
       minChunks: 1,
       maxAsyncRequests: 30,
       maxInitialRequests: 30,

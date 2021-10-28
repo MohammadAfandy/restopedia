@@ -67,18 +67,6 @@ ul {
     margin: 16px 0;
 }
 
-/* Footer */
-.footer {
-    text-align: center;
-    padding: 20px 0;
-    background-color: var(--appbar-background);
-    box-shadow: 8px 0 8px 0 var(--shadow-color);
-}
-
-.footer span {
-    font-size: 18px;
-}
-
 [data-theme="dark"] {
     --main-background: #1C1C1C;
     --secondary-background: #333333;

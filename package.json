@@ -10,7 +10,6 @@
     "build": "webpack --config webpack.prod.js",
     "build-analyzer": "webpack --config webpack.prod.analyzer.js",
     "lint": "eslint ./src",
-    "build-image": "node build-image",
     "test": "karma start",
     "e2e": "codeceptjs run --steps",
     "e2e-ci": "server-test start-dev :9191 e2e"
@@ -64,6 +63,7 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^5.0.9",
+    "webpack-pwa-manifest": "^4.3.0",
     "whatwg-fetch": "^3.2.0",
     "workbox-webpack-plugin": "^6.3.0"
   },

@@ -34,14 +34,14 @@ export default class StarRating extends BaseElement {
 
     const renderStar = (className) => html`
       <i
-        class="fa ${className} ${styles.star}"
+        class="${className} ${styles.star}"
         aria-hidden="true"
       ></i>
     `;
 
     return html`
       ${[...Array(fullStarCount)].map(() => renderStar('fa fa-star'))}
-      ${[...Array(halfStarCount)].map(() => renderStar('fa fa-star-half-o'))}
+      ${[...Array(halfStarCount)].map(() => renderStar('fa fa-star-half-alt'))}
       ${[...Array(emptyStarCount)].map(() => renderStar('fa fa-star-o'))}
 
       ${this.showRating ? html`

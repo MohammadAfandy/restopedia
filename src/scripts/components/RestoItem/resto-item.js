@@ -22,18 +22,18 @@ export default class RestoItem extends BaseElement {
 
   render() {
     const renderSkeleton = () => html`
-      <div>
-        <skeleton-element .height=${'220px'}></skeleton-element>
+      <div class="${styles.imageContainer}">
+        <skeleton-element .height=${'250px'}></skeleton-element>
       </div>
       <div class="${styles.body}">
         <div class="${styles.subBody}">
-          <skeleton-element .width=${'150px'}></skeleton-element>
-          <skeleton-element .width=${'100px'}></skeleton-element>
+          <skeleton-element .width=${'150px'} .height=${'25px'}></skeleton-element>
+          <skeleton-element .width=${'100px'} .height=${'25px'}></skeleton-element>
         </div>
         <h2 class="${styles.title}">
-          <skeleton-element .height=${'2rem'} .width=${'200px'}></skeleton-element>
+          <skeleton-element .height=${'44px'} .width=${'200px'}></skeleton-element>
         </h2>
-          <skeleton-element .height=${'180px'}></skeleton-element>
+          <skeleton-element .height=${'75px'}></skeleton-element>
       </div>
     `;
 
@@ -49,7 +49,7 @@ export default class RestoItem extends BaseElement {
     } = this.restaurant;
 
     return html`
-      <div>
+      <div class="${styles.imageContainer}">
         <img
           class="${styles.image} lazyload"
           data-src="${picture && picture.small}"

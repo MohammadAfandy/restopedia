@@ -65,6 +65,8 @@ export default class AppBar extends BaseElement {
         class="${styles.logo}"
         src="${this.logo}"
         alt="Logo ${this.title}"
+        height="40"
+        width="40"
       />
       <h1 class="${styles.title}">
         <a href="#/">${this.title}</a>
