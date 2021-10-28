@@ -25,11 +25,11 @@ jobs:
     - name: Run Test
       run: npm run test
       env:
-        HEADLESS: true
+        CI: true
     - name: Run E2E Test
       run: npm run e2e-ci
       env:
-        HEADLESS: true
+        CI: true
 
   deploy:
     needs: build
