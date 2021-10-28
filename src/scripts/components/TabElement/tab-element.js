@@ -40,11 +40,6 @@ export default class TabElement extends BaseElement {
 
     if (this.isLoading) return renderSkeleton();
 
-    const activeTab = this.tabs.find((tab) => tab.isActive);
-    let content = '';
-    if (activeTab) {
-      content = activeTab.content;
-    }
     return html`
       <div role="tablist">
         ${this.tabs.map((tab) => html`
@@ -58,10 +53,17 @@ export default class TabElement extends BaseElement {
             ${tab.name}
           </button>
         `)}
-      </div>
-      <div role="tabpanel" class="${styles.tabPanel}">
-        ${content}
-      </div>
+        </div>
+        ${this.tabs.map((tab) => html`
+          <div
+            class="${styles.tabPanel} ${tab.isActive ? '' : styles.hidden}"
+            id="panel-${tab.name}"
+            role="tabpanel"
+            aria-labelledby="tab-${tab.name}"
+          >
+            ${tab.content}
+          </div>
+        `)}
     `;
   }
 }

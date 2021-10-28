@@ -1,4 +1,7 @@
 import { ref, createRef } from 'lit/directives/ref';
+import { createAvatar } from '@dicebear/avatars';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import * as avatarStyle from '@dicebear/avatars-initials-sprites';
 import { BaseElement, html } from '../base-element';
 import SnackBarInitiator from '../../utils/snackbar-initiator';
 
@@ -76,6 +79,14 @@ export default class RestoReview extends BaseElement {
     }
   }
 
+  generateAvatar(name) {
+    return createAvatar(avatarStyle, {
+      seed: name,
+      radius: 50,
+      size: 46,
+    });
+  }
+
   render() {
     return html`
       <ul>
@@ -83,11 +94,7 @@ export default class RestoReview extends BaseElement {
           ? this.reviews.map((review) => html`
             <li class="${styles.container} review_container" tabindex="0">
               <div class="${styles.profile}">
-                <img
-                  class="${styles.avatar}"
-                  src="https://avatar.oxro.io/avatar.svg?name=${review.name}"
-                  alt="${review.name}"
-                >
+                ${unsafeHTML(this.generateAvatar(review.name))}
                 <div class="${styles.desc}">
                   <span class="${styles.name} reviewer_name">${review.name}</span>
                   <span class="${styles.date} reviewer_date">${review.date}</span>

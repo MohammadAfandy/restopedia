@@ -1,7 +1,8 @@
 import { BaseElement, html } from '../base-element';
+import UrlParser from '../../utils/url-parser';
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
-import UrlParser from '../../utils/url-parser';
+
 import '../Star-Rating/star-rating';
 
 import styles from './resto-item.module.css';
