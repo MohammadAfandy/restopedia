@@ -1,4 +1,5 @@
 import BaseHelper from '../utils/base-helper';
+import UrlParser from '../utils/url-parser';
 
 export default class RestoListPresenter {
   constructor({ view, restaurantApi, favoriteRestaurantDb }) {
@@ -12,10 +13,13 @@ export default class RestoListPresenter {
 
     BaseHelper.setLoading('resto-list');
     const restaurants = await this.restaurantApi.list();
-    if (restaurants.length) {
-      await this.view.renderRestaurants(restaurants);
-    } else {
-      this.view.renderError('Sorry, we couldn\'t load restaurants, please check your connection');
+    const { resource } = UrlParser.parseActiveUrlWithoutCombiner();
+    if (['restaurants', null].includes(resource)) {
+      if (restaurants.length) {
+        await this.view.renderRestaurants(restaurants);
+      } else {
+        this.view.renderError('Sorry, we couldn\'t load restaurants, please check your connection');
+      }
     }
     BaseHelper.stopLoading('resto-list');
   }
@@ -38,10 +42,13 @@ export default class RestoListPresenter {
 
     BaseHelper.setLoading('resto-list');
     const restaurants = await this.favoriteRestaurantDb.getAll();
-    if (restaurants.length) {
-      await this.view.renderRestaurants(restaurants);
-    } else {
-      this.view.renderError('You haven\'t added favorite restaurant yet');
+    const { resource } = UrlParser.parseActiveUrlWithoutCombiner();
+    if (resource === 'favorites') {
+      if (restaurants.length) {
+        await this.view.renderRestaurants(restaurants);
+      } else {
+        this.view.renderError('You haven\'t added favorite restaurant yet');
+      }
     }
     BaseHelper.stopLoading('resto-list');
   }

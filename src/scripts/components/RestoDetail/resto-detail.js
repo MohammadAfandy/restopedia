@@ -81,8 +81,8 @@ export default class RestoDetail extends BaseElement {
       <div class="${styles.container}">
         <div class="${styles.detail}">
           <picture>
-            <source media="(min-width: 1200px)" srcset="${picture && picture.large}">
-            <source media="(min-width: 768px)" srcset="${picture && picture.medium}">
+            <source media="(min-width: 1024px)" srcset="${picture && picture.large}">
+            <source media="(min-width: 480px)" srcset="${picture && picture.medium}">
             <img
               class="${styles.image}"
               src="${picture && picture.small}"

@@ -1,5 +1,6 @@
 import { BaseElement, html } from '../base-element';
 import UrlParser from '../../utils/url-parser';
+import PlaceHolderImage from '../../../public/images/placeholder.jpg';
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
@@ -53,9 +54,9 @@ export default class RestoItem extends BaseElement {
       <div class="${styles.imageContainer}">
         <img
           class="${styles.image} lazyload"
+          src="${PlaceHolderImage}"
           data-src="${picture && picture.small}"
           alt="Restaurant ${name}"
-          @error=${this.onErrorImage}
         />
       </div>
       <div class="${styles.body}">
