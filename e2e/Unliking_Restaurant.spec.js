@@ -16,7 +16,6 @@ Scenario('unliking one restaurant', async ({ I }) => {
   I.click('like-button button[aria-label="Like this restaurant"]');
 
   I.amOnPage('/#/favorites');
-  I.wait(2);
   I.seeElement('resto-item a');
   const firstRestaurantLiked = locate('resto-item a').first();
 
@@ -49,7 +48,6 @@ Scenario('unliking multiple restaurants', async ({ I }) => {
   const restoElementCount = await I.grabNumberOfVisibleElements('resto-item');
   assert.strictEqual(resto.length, restoElementCount);
 
-  I.amOnPage('/#/favorites');
   for (let i = 1; i <= count; i += 1) {
     const firstRestaurantLikedFound = locate('resto-item a').first();
     I.click(firstRestaurantLikedFound);
