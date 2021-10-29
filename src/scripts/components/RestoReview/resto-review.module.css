@@ -117,6 +117,7 @@
 
 .button {
     background-color: var(--primary-color);
+    color: #FFF;
     cursor: pointer;
     font-size: 16px;
     padding: 0 20px;

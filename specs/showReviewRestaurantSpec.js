@@ -2,8 +2,8 @@ import { addReviewRestoContainer } from './helpers/reviewRestaurantSetup';
 import * as TestFactories from './helpers/testFactories';
 
 describe('Show Restaurant Reviews', () => {
-  beforeEach(() => {
-    addReviewRestoContainer();
+  beforeEach(async () => {
+    await addReviewRestoContainer();
   });
 
   it('should show reviews correctly when reviews exist', async () => {

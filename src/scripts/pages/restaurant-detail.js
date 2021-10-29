@@ -6,15 +6,15 @@ class RestaurantDetailPage extends BasePage {
     this.restoDetailView = (await import('../views/resto-detail-view')).default;
     this.likeRestoView = (await import('../views/like-resto-view')).default;
     this.restoReviewView = (await import('../views/resto-review-view')).default;
-    this.restoReviewView.getTemplate();
+    await this.restoReviewView.getTemplate();
 
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     this.restaurantId = UrlParser.parseIdFromSlug(url.id);
 
     return `
       <section id="content">
-        ${this.restoDetailView.getTemplate()}
-        ${this.likeRestoView.getTemplate()}
+        ${await this.restoDetailView.getTemplate()}
+        ${await this.likeRestoView.getTemplate()}
       </section>
     `;
   }

@@ -1,6 +1,6 @@
 export default class RestoReviewView {
-  static getTemplate() {
-    import('../components/RestoReview/resto-review');
+  static async getTemplate() {
+    await import('../components/RestoReview/resto-review');
     return `
       <resto-review></resto-review>
     `;

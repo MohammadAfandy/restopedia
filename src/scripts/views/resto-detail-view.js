@@ -1,6 +1,6 @@
 export default class RestoDetailView {
-  static getTemplate() {
-    import('../components/RestoDetail/resto-detail');
+  static async getTemplate() {
+    await import('../components/RestoDetail/resto-detail');
     return `
       <div id="resto_detail_container">
         <h2 id="resto_detail_title" class="main-title"></h2>

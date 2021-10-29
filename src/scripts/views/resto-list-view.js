@@ -1,6 +1,6 @@
 export default class RestoListView {
-  static getTemplate() {
-    import('../components/RestoList/resto-list');
+  static async getTemplate() {
+    await import('../components/RestoList/resto-list');
     return `
       <h2 id="resto_list_title" class="main-title"></h2>
       <resto-list></resto-list>

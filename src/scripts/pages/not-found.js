@@ -4,7 +4,7 @@ class NotFoundPage extends BasePage {
   static async render() {
     return `
       <section id="content">
-        <div id="error_content" class="not-found">
+        <div class="error-content">
           404 - Page Not Found</div id="error_content">
         </div>
       </section>

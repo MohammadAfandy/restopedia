@@ -3,8 +3,8 @@ import * as TestFactories from './helpers/testFactories';
 import { addLikeButtonContainer, SnackBarInitiator } from './helpers/likeRestaurantSetup';
 
 describe('Liking A Restaurant', () => {
-  beforeEach(() => {
-    addLikeButtonContainer();
+  beforeEach(async () => {
+    await addLikeButtonContainer();
   });
 
   afterEach(async () => {

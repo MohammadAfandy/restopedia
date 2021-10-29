@@ -49,6 +49,9 @@ Scenario('adding one review', async ({ I }) => {
 
   I.mockRequest('POST', 'https://restaurant-api.dicoding.dev/review', 200, responseReview);
   I.click('Send', 'resto-review form');
+  I.waitForResponse('https://restaurant-api.dicoding.dev/review', {
+    timeout: 5000,
+  });
 
   I.seeElement('resto-review ul li');
 

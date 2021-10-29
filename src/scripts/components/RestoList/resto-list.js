@@ -22,7 +22,7 @@ export default class RestoList extends BaseElement {
   renderLoading() {
     return html`
       <div class="${styles.wrapper}">
-        ${[...Array(6)].map(() => html`
+        ${[...Array(3)].map(() => html`
           <resto-item .isLoading=${true}></resto-item>
         `)}
       </div>

@@ -56,8 +56,9 @@ ul {
     list-style: none;
 }
 
-.not-found {
+.error-content {
     padding-top: 200px;
+    text-align: center;
 }
 
 .main-title {

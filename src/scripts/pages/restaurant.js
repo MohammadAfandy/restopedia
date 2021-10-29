@@ -8,7 +8,7 @@ class RestaurantPage extends BasePage {
     return `
       <hero-element></hero-element>
       <section id="content">
-        ${this.restoListView.getTemplate()}
+        ${await this.restoListView.getTemplate()}
       </section>
     `;
   }

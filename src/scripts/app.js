@@ -5,8 +5,9 @@ import routes from './routes/routes';
 import './components/AppBar/app-bar';
 import './components/MainContent/main-content';
 import './components/SkipToContent/skip-to-content';
-import './components/SkeletonElement/skeleton-element';
 import './components/FooterElement/footer-element';
+import './components/SnackBar/snack-bar';
+import './components/SkeletonElement/skeleton-element';
 
 // import initiator
 import DarkModeHelper from './utils/dark-mode-helper';
@@ -26,16 +27,15 @@ class App {
     SnackBarInitiator.init();
   }
 
-  getPageClass() {
-    const PageClass = routes[this.url] || routes['/not-found'];
-    return PageClass;
+  getPage() {
+    return routes[this.url] || routes['/not-found'];
   }
 
   async renderPage() {
     window.scrollTo({ top: 0 });
     this.url = UrlParser.parseActiveUrlWithCombiner();
 
-    const Page = this.getPageClass();
+    const Page = this.getPage();
 
     // set current url to set active menu on navbar
     this.appBar.currentUrl = this.url;

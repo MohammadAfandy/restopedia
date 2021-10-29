@@ -3,8 +3,8 @@ import RestaurantApi from '../src/scripts/data/api/restaurant-api';
 import * as TestFactories from './helpers/testFactories';
 
 describe('Add Restaurant Review', () => {
-  beforeEach(() => {
-    addReviewRestoContainer();
+  beforeEach(async () => {
+    await addReviewRestoContainer();
   });
 
   it('should not add review when given name is empty', async () => {

@@ -5,7 +5,7 @@ class FavoritePage extends BasePage {
     this.restoListView = (await import('../views/resto-list-view')).default;
     return `
       <section id="content">
-        ${this.restoListView.getTemplate()}
+        ${await this.restoListView.getTemplate()}
       </section>
     `;
   }

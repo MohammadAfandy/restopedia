@@ -1,6 +1,6 @@
 export default class LikeRestoView {
-  static getTemplate() {
-    import('../components/LikeButton/like-button');
+  static async getTemplate() {
+    await import('../components/LikeButton/like-button');
     return `
       <like-button></like-button>
     `;

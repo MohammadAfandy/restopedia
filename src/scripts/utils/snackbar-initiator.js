@@ -1,6 +1,5 @@
 class SnackBarInitiator {
-  static async init() {
-    await import('../components/SnackBar/snack-bar');
+  static init() {
     this.snackbar = document.querySelector('snack-bar');
   }
 

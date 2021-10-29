@@ -1,4 +1,5 @@
 import { unsafeHTML } from 'lit/directives/unsafe-html';
+import { until } from 'lit-html/directives/until';
 import { BaseElement, html } from '../base-element';
 import RestoReviewView from '../../views/resto-review-view';
 import '../TabElement/tab-element';
@@ -66,7 +67,10 @@ export default class RestoDetail extends BaseElement {
       {
         name: 'Review',
         isActive: true,
-        content: html`${unsafeHTML(RestoReviewView.getTemplate())}`,
+        content: html`${until(
+          RestoReviewView.getTemplate().then(unsafeHTML),
+          '',
+        )}`,
       },
       {
         name: 'Menu',
