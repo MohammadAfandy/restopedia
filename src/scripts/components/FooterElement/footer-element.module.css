@@ -1,6 +1,8 @@
 .footer {
-    text-align: center;
-    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
     background-color: var(--appbar-background);
     box-shadow: 8px 0 8px 0 var(--shadow-color);
 }

@@ -3,5 +3,5 @@
     display: block;
     padding-top: var(--appbar-height);
     padding-bottom: 20px;
-    min-height: calc(100vh - 70px);
+    flex: 1;
 }

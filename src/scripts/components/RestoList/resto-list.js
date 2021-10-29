@@ -9,14 +9,12 @@ export default class RestoList extends BaseElement {
     this.setAttribute('role', 'article');
     this.classList.add(styles.restoList);
     this.restaurants = [];
-    this.isLoading = false;
     this.errorText = '';
   }
 
   static get properties() {
     return {
       restaurants: { type: Array },
-      isLoading: { type: Boolean },
       errorText: { type: String },
     };
   }
@@ -49,9 +47,9 @@ export default class RestoList extends BaseElement {
   }
 
   render() {
-    if (this.isLoading) return this.renderLoading();
     if (this.errorText !== '') return this.renderError();
-    return this.renderSuccess();
+    if (this.restaurants.length) return this.renderSuccess();
+    return this.renderLoading();
   }
 }
 

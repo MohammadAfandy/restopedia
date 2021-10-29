@@ -12,7 +12,6 @@ export default class RestoDetail extends BaseElement {
     super();
     this.classList.add(styles.restoDetail);
     this.restaurant = null;
-    this.isLoading = false;
     this.errorText = '';
   }
 
@@ -20,7 +19,6 @@ export default class RestoDetail extends BaseElement {
     return {
       restaurant: { type: Object },
       onAfterAddReview: { type: Function },
-      isLoading: { type: Boolean },
       errorText: { type: String },
     };
   }
@@ -123,10 +121,9 @@ export default class RestoDetail extends BaseElement {
   }
 
   render() {
-    if (this.isLoading) return this.renderLoading();
     if (this.errorText !== '') return this.renderError();
-    if (!this.restaurant) return this.renderError();
-    return this.renderSuccess();
+    if (this.restaurant) return this.renderSuccess();
+    return this.renderLoading();
   }
 }
 

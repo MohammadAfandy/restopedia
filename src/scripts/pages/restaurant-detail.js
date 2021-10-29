@@ -1,6 +1,5 @@
 import BasePage from './base-page';
 import UrlParser from '../utils/url-parser';
-import BaseHelper from '../utils/base-helper';
 
 class RestaurantDetailPage extends BasePage {
   static async render() {
@@ -27,9 +26,8 @@ class RestaurantDetailPage extends BasePage {
       view: this.restoDetailView,
       restaurantApi: RestaurantApi,
     });
-    BaseHelper.setLoading('resto-detail');
+    this.restoDetailView.emptyRestaurant();
     const restaurant = await this.restoDetailPresenter.getDetailRestaurant(this.restaurantId);
-    BaseHelper.stopLoading('resto-detail');
     this.restoDetailPresenter.showDetailRestaurant(restaurant);
 
     const LikeRestoPresenter = (await import('../presenters/like-resto-presenter')).default;

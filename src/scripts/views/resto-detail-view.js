@@ -24,4 +24,9 @@ export default class RestoDetailView {
     const restoDetailElement = document.querySelector('resto-detail');
     restoDetailElement.errorText = text;
   }
+
+  static emptyRestaurant() {
+    const restoDetailElement = document.querySelector('resto-detail');
+    restoDetailElement.restaurant = null;
+  }
 }

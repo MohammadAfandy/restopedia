@@ -22,4 +22,10 @@ export default class RestoListView {
     const restoListElement = document.querySelector('resto-list');
     restoListElement.errorText = text;
   }
+
+  static emptyRestaurants() {
+    const restoListElement = document.querySelector('resto-list');
+    restoListElement.errorText = '';
+    restoListElement.restaurants = [];
+  }
 }

@@ -1,4 +1,3 @@
-import BaseHelper from '../utils/base-helper';
 import UrlParser from '../utils/url-parser';
 
 export default class RestoListPresenter {
@@ -11,7 +10,7 @@ export default class RestoListPresenter {
   async showAllRestaurants() {
     this.view.setTitle('Explore restaurant');
 
-    BaseHelper.setLoading('resto-list');
+    this.view.emptyRestaurants();
     const restaurants = await this.restaurantApi.list();
     const { resource } = UrlParser.parseActiveUrlWithoutCombiner();
     if (['restaurants', null].includes(resource)) {
@@ -21,26 +20,24 @@ export default class RestoListPresenter {
         this.view.renderError('Sorry, we couldn\'t load restaurants, please check your connection');
       }
     }
-    BaseHelper.stopLoading('resto-list');
   }
 
   async showSearchedRestaurants(searchValue) {
     this.view.setTitle(`Showing results for "${searchValue}"`);
 
-    BaseHelper.setLoading('resto-list');
+    this.view.emptyRestaurants();
     const restaurants = await this.restaurantApi.search(searchValue);
     if (restaurants.length) {
       await this.view.renderRestaurants(restaurants);
     } else {
       this.view.renderError(`Sorry, no restaurants found for "${searchValue}"`);
     }
-    BaseHelper.stopLoading('resto-list');
   }
 
   async showFavoriteRestaurants() {
     this.view.setTitle('Favorite restaurant');
 
-    BaseHelper.setLoading('resto-list');
+    this.view.emptyRestaurants();
     const restaurants = await this.favoriteRestaurantDb.getAll();
     const { resource } = UrlParser.parseActiveUrlWithoutCombiner();
     if (resource === 'favorites') {
@@ -50,6 +47,5 @@ export default class RestoListPresenter {
         this.view.renderError('You haven\'t added favorite restaurant yet');
       }
     }
-    BaseHelper.stopLoading('resto-list');
   }
 }
