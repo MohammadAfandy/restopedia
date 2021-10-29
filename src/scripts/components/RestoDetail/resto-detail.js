@@ -4,7 +4,7 @@ import { BaseElement, html } from '../base-element';
 import RestoReviewView from '../../views/resto-review-view';
 import '../TabElement/tab-element';
 import '../MenuPanel/menu-panel';
-import '../Star-Rating/star-rating';
+import '../StarRating/star-rating';
 
 import styles from './resto-detail.module.css';
 
@@ -19,7 +19,6 @@ export default class RestoDetail extends BaseElement {
   static get properties() {
     return {
       restaurant: { type: Object },
-      onAfterAddReview: { type: Function },
       errorText: { type: String },
     };
   }

@@ -4,7 +4,7 @@ import PlaceHolderImage from '../../../public/images/placeholder.jpg';
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
-import '../Star-Rating/star-rating';
+import '../StarRating/star-rating';
 
 import styles from './resto-item.module.css';
 

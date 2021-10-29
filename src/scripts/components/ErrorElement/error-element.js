@@ -1,5 +1,4 @@
 import { BaseElement, html } from '../base-element';
-import '../SearchInput/search-input';
 
 import styles from './error-element.module.css';
 

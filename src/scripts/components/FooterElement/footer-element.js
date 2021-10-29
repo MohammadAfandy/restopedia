@@ -11,15 +11,8 @@ export default class FooterElement extends BaseElement {
 
   static get properties() {
     return {
-      isLiked: { type: Boolean },
-      onLike: { type: Function },
-      ariaLabel: { type: String },
+      appName: { type: String },
     };
-  }
-
-  onClickLike(event) {
-    this.onLike();
-    event.stopPropagation();
   }
 
   render() {
