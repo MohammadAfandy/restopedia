@@ -1,22 +1,14 @@
 const assert = require('assert');
-
-// set form review input data
-const reviewData = {
-  name: 'John Doe',
-  review: 'The price is good for a person with weak economy like me :(',
-  date: '27 Oktober 2021',
-};
-
-// set initial post response data
-const responseReview = {
-  error: false,
-  message: 'success',
-  customerReviews: [],
-};
+const { randomNumber } = require('./helpers/helper');
 
 Feature('Adding Review Restaurant');
 
 Scenario('adding one review', async ({ I }) => {
+  const reviewData = {
+    name: `John Doe ${randomNumber(100, 999)}`,
+    review: `Hello from codecept ${randomNumber(100, 999)}`,
+  };
+
   I.amOnPage('/');
 
   I.seeElement('resto-item a');
@@ -35,29 +27,25 @@ Scenario('adding one review', async ({ I }) => {
     initialReviewerReviews.length,
   );
 
-  const initialReviewerData = initialReviewerNames.map((name, idx) => ({
-    name,
-    date: initialReviewerDates[idx],
-    review: initialReviewerReviews[idx],
-  }));
-
-  responseReview.customerReviews.push(...initialReviewerData, reviewData);
-
   I.seeElement('resto-review form');
   I.fillField('#review_name', reviewData.name);
   I.fillField('#review_text', reviewData.review);
 
-  I.mockRequest('POST', 'https://restaurant-api.dicoding.dev/review', 200, responseReview);
+  /**
+   * actually I want to mock the request
+   * but there is an issue in codeceptjs/mock-request that hast not been resolved yet
+   * https://github.com/codeceptjs/mock-request/issues/4
+   */
+  // I.mockRequest('POST', 'https://restaurant-api.dicoding.dev/review', 200, {
+  //   error: false,
+  //   message: 'success',
+  //   customerReviews: [reviewData],
+  // });
+
   I.click('Send', 'resto-review form');
-  // I.waitForResponse('https://restaurant-api.dicoding.dev/review');
+  I.wait(2);
 
   I.seeElement('resto-review ul li');
-
-  const lastReviewLocatorName = locate('resto-review ul li.review_container .reviewer_name').last();
-  const lastReviewLocatorText = locate('resto-review ul li.review_container .reviewer_review').last();
-  const lastReviewName = await I.grabTextFrom(lastReviewLocatorName);
-  const lastReviewText = await I.grabTextFrom(lastReviewLocatorText);
-
-  assert.strictEqual(reviewData.name, lastReviewName);
-  assert.strictEqual(reviewData.review, lastReviewText);
+  I.see(reviewData.name, 'resto-review ul li.review_container .reviewer_name');
+  I.see(reviewData.review, 'resto-review ul li.review_container .reviewer_review');
 });

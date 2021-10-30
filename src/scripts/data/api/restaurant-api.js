@@ -21,7 +21,7 @@ class RestaurantApi {
     try {
       const response = await fetch(url, options);
       const data = await response.json();
-      if (response.status !== 200) {
+      if (!response.ok) {
         throw new Error(data.message || 'Something went wrong');
       }
       return [data, null];

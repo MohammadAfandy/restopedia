@@ -14,13 +14,14 @@ exports.config = {
       windowSize: '1280x720',
       chrome: {
         args: [
+          // comment this to disable cors
           '--disable-web-security',
         ],
       },
     },
-    MockRequestHelper: {
-      require: '@codeceptjs/mock-request',
-    },
+    // MockRequestHelper: {
+    //   require: '@codeceptjs/mock-request',
+    // },
   },
   include: {
     I: './steps_file.js',
