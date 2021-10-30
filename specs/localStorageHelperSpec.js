@@ -21,8 +21,8 @@ describe('Local Storage Helper', () => {
     LocalStorageHelper.set('keyTwo', 'valueTwo');
     LocalStorageHelper.set('keyThree', 'valueThree');
     LocalStorageHelper.clear();
-    Object.keys({ ...localStorage }).forEach((key) => {
-      expect(LocalStorageHelper.get(key)).toBeNull();
-    });
+    expect(LocalStorageHelper.get('keyOne')).toBeNull();
+    expect(LocalStorageHelper.get('keyTwo')).toBeNull();
+    expect(LocalStorageHelper.get('keyThree')).toBeNull();
   });
 });
