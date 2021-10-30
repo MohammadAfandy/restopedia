@@ -11,7 +11,7 @@ export default class MenuPanel extends BaseElement {
 
   static get properties() {
     return {
-      reviews: { type: Array },
+      menus: { type: Array },
     };
   }
 
