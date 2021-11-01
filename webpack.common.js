@@ -109,11 +109,14 @@ module.exports = {
       theme_color: '#d84315',
       crossorigin: 'use-credentials',
       start_url: '/index.html',
+      inject: true,
+      ios: true,
       icons: [
         {
           src: path.resolve(__dirname, 'src/public/images/logo.png'),
           sizes: [96, 128, 192, 256, 384, 512],
           purpose: 'maskable',
+          ios: true,
         },
         {
           src: path.resolve(__dirname, 'src/public/images/logo.png'),
