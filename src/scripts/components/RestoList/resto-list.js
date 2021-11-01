@@ -1,3 +1,4 @@
+import { until } from 'lit-html/directives/until';
 import { BaseElement, html } from '../base-element';
 import '../RestoItem/resto-item';
 
@@ -30,10 +31,12 @@ export default class RestoList extends BaseElement {
   }
 
   renderError() {
-    import('../ErrorElement/error-element');
-    return html`
-      <error-element .text=${this.errorText}></error-element>
-    `;
+    return html`${until(
+      import('../ErrorElement/error-element').then(() => html`
+        <error-element .text=${this.errorText}></error-element>
+      `),
+      '',
+    )}`;
   }
 
   renderSuccess() {

@@ -3,9 +3,20 @@ import UrlParser from '../utils/url-parser';
 
 class RestaurantDetailPage extends BasePage {
   static async render() {
-    this.restoDetailView = (await import('../views/resto-detail-view')).default;
-    this.likeRestoView = (await import('../views/like-resto-view')).default;
-    this.restoReviewView = (await import('../views/resto-review-view')).default;
+    const [
+      { default: RestoDetailView },
+      { default: LikeRestoView },
+      { default: RestoReviewView },
+    ] = await Promise.all([
+      import('../views/resto-detail-view'),
+      import('../views/like-resto-view'),
+      import('../views/resto-review-view'),
+    ]);
+
+    this.restoDetailView = RestoDetailView;
+    this.likeRestoView = LikeRestoView;
+    this.restoReviewView = RestoReviewView;
+
     await this.restoReviewView.getTemplate();
 
     const url = UrlParser.parseActiveUrlWithoutCombiner();
@@ -20,25 +31,34 @@ class RestaurantDetailPage extends BasePage {
   }
 
   static async afterRender() {
-    const RestoDetailPresenter = (await import('../presenters/resto-detail-presenter')).default;
-    const RestaurantApi = (await import('../data/api/restaurant-api')).default;
+    const [
+      { default: RestoDetailPresenter },
+      { default: LikeRestoPresenter },
+      { default: RestoReviewPresenter },
+      { default: RestaurantApi },
+      { default: FavoriteRestaurantDB },
+    ] = await Promise.all([
+      import('../presenters/resto-detail-presenter'),
+      import('../presenters/like-resto-presenter'),
+      import('../presenters/resto-review-presenter'),
+      import('../data/api/restaurant-api'),
+      import('../data/db/favorite-restaurant-db'),
+    ]);
+
     this.restoDetailPresenter = new RestoDetailPresenter({
       view: this.restoDetailView,
       restaurantApi: RestaurantApi,
     });
     this.restoDetailView.emptyRestaurant();
     const restaurant = await this.restoDetailPresenter.getDetailRestaurant(this.restaurantId);
-    this.restoDetailPresenter.showDetailRestaurant(restaurant);
+    await this.restoDetailPresenter.showDetailRestaurant(restaurant);
 
-    const LikeRestoPresenter = (await import('../presenters/like-resto-presenter')).default;
-    const FavoriteRestaurantDB = (await import('../data/db/favorite-restaurant-db')).default;
     this.likeRestoPresenter = new LikeRestoPresenter({
       view: this.likeRestoView,
       favoriteRestaurantDb: FavoriteRestaurantDB,
     });
     this.likeRestoPresenter.showLikeRestoButton(restaurant);
 
-    const RestoReviewPresenter = (await import('../presenters/resto-review-presenter')).default;
     this.restoReviewPresenter = new RestoReviewPresenter({
       view: this.restoReviewView,
       restaurantApi: RestaurantApi,
