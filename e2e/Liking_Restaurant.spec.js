@@ -38,9 +38,8 @@ Scenario('liking multiple restaurants', async ({ I }) => {
   I.amOnPage('/');
 
   const resto = [];
-  for (let i = 1; i <= count; i += 1) {
+  for (let i = 1; i <= count; i++) {
     const selectedRestaurant = locate('resto-item a').at(i);
-    /* eslint-disable no-await-in-loop */
     resto.push(await I.grabTextFrom(selectedRestaurant));
     I.click(selectedRestaurant);
 

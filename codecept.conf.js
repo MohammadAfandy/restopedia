@@ -14,8 +14,8 @@ exports.config = {
       windowSize: '1280x720',
       chrome: {
         args: [
-          // comment this to disable cors
-          '--disable-web-security',
+          // comment below to enable web security such as same origin policy
+          // '--disable-web-security',
         ],
       },
     },

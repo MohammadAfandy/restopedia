@@ -1,5 +1,5 @@
 import API_ENDPOINT from '../../globals/api-endpoint';
-import CONFIG from '../../globals/config';
+// import CONFIG from '../../globals/config';
 import SnackBarInitiator from '../../utils/snackbar-initiator';
 
 class RestaurantApi {
@@ -59,7 +59,7 @@ class RestaurantApi {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        'X-Auth-Token': CONFIG.API_KEY,
+        // 'X-Auth-Token': CONFIG.API_KEY,
       },
       body: JSON.stringify({ id, name, review }),
     });

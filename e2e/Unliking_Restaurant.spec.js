@@ -35,7 +35,6 @@ Scenario('unliking multiple restaurants', async ({ I }) => {
   const resto = [];
   for (let i = 1; i <= count; i++) {
     const selectedRestaurant = locate('resto-item a').at(i);
-    /* eslint-disable no-await-in-loop */
     resto.push(await I.grabTextFrom(selectedRestaurant));
     I.click(selectedRestaurant);
 
@@ -48,7 +47,7 @@ Scenario('unliking multiple restaurants', async ({ I }) => {
   const restoElementCount = await I.grabNumberOfVisibleElements('resto-item');
   assert.strictEqual(resto.length, restoElementCount);
 
-  for (let i = 1; i <= count; i += 1) {
+  for (let i = 1; i <= count; i++) {
     const firstRestaurantLikedFound = locate('resto-item a').first();
     I.click(firstRestaurantLikedFound);
 
